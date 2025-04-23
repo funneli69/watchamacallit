@@ -4,6 +4,7 @@ float[] x = new float[maxf];
 float[] y = new float[maxf];
 float[] angle = new float[maxf];
 float[] sway = new float[maxf];
+String[] flowers = {"daisy","tulip","weird cube thing"};
 String[] flower = new String[maxf];
 void setup(){
   size(1000,600);
@@ -40,10 +41,13 @@ void drawflower(String type){
       float px = cos(petal)*10;
       float py = sin(petal)*10-10;
       ellipse (px,py,10,15);
-    }
+    } 
     fill(255,200,0);
     ellipse(0,-10,10,10);
-  }
+  } else if(type.equals("weird cube thing")){
+       fill(255);
+   ellipse(mouseX,mouseY,50,50);
+    }
 }
 void mousePressed(){
   if(currentf<maxf){
@@ -51,7 +55,7 @@ void mousePressed(){
     y[currentf] = mouseY;
     angle[currentf] = random(TWO_PI);
     sway[currentf]=random(0.01,0.03);
-    flower[currentf]=random(1)<0.5 ? "tulip" : "daisy";
+     flower[currentf]=flowers[(int)random(flowers.length)];
     currentf++;
   }
 }
